@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Кликинатор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="header">
+            <h1>Кликинатор</h1>
+            <div id="score-panel">
+                <span>Счёт: <b id="score">0</b></span>
+                <span>Удалено: <b id="removed">0</b></span>
+            </div>
+        </div>
+        <canvas id="game"></canvas>
+        <div id="controls">
+            <button id="btn-undo">Отменить</button>
+            <button id="btn-new">Новая игра</button>
+        </div>
+        <div id="game-over" class="hidden">
+            <p>Игра окончена!</p>
+            <p>Итоговый счёт: <b id="final-score">0</b></p>
+            <button id="btn-restart">Играть снова</button>
+        </div>
+    </div>
+    <script src="https://yandex.ru/games/sdk/v2"></script>
+    <script src="game.js"></script>
+</body>
+</html>
