@@ -41,13 +41,30 @@ function applyLang(t) {
     document.getElementById('btn-restart').textContent = t.playAgain;
 }
 
-YaGames.init().then(sdk => {
-    ysdk = sdk;
-    lang = ysdk.environment?.i18n?.lang || 'ru';
-    applyLang(translations[lang] || translations.ru);
-    ysdk.features.LoadingAPI?.ready();
-}).catch(() => {
-    applyLang(translations.ru);
+function loadSDK() {
+    return new Promise((resolve) => {
+        if (typeof YaGames !== 'undefined') { resolve(); return; }
+        const s = document.createElement('script');
+        s.src = 'https://yandex.ru/games/sdk/v2';
+        s.onload = resolve;
+        s.onerror = resolve;
+        document.head.appendChild(s);
+    });
+}
+
+loadSDK().then(() => {
+    if (typeof YaGames !== 'undefined') {
+        YaGames.init().then(sdk => {
+            ysdk = sdk;
+            lang = ysdk.environment?.i18n?.lang || 'ru';
+            applyLang(translations[lang] || translations.ru);
+            ysdk.features.LoadingAPI?.ready();
+        }).catch(() => {
+            applyLang(translations.ru);
+        });
+    } else {
+        applyLang(translations.ru);
+    }
 });
 
 const canvas = document.getElementById('game');
