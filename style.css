@@ -29,7 +29,8 @@ body {
     align-items: center;
     gap: 8px;
     padding: 8px;
-    max-width: 100vw;
+    width: 100%;
+    flex: 1;
     max-height: 100vh;
 }
 
@@ -70,6 +71,9 @@ h1 {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 #controls {

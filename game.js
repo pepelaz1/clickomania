@@ -67,9 +67,9 @@ let animationPhase = 'idle';
 let explosionTimer = 0;
 
 function resize() {
-    const maxW = Math.min(window.innerWidth - 16, 400);
+    const appW = document.getElementById('app').clientWidth - 16;
     const maxH = window.innerHeight - 120;
-    cellSize = Math.floor(Math.min(maxW / COLS, maxH / ROWS));
+    cellSize = Math.floor(Math.min(appW / COLS, maxH / ROWS));
     canvas.width = cellSize * COLS;
     canvas.height = cellSize * ROWS;
     draw();
